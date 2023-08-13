@@ -22,7 +22,8 @@ const Sidebar = () => {
                     <Link to="/" onClick={() => {setActiveMenu(false)}} className='items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tighter dark:text-white text-slate-900'>
                         <SiShopware />  <span>Shoppy</span>
                     </Link>
-                    <TooltipComponent content="Menu" position="ButtonCenter" >
+                     {/* TooltipComponent for show "menu" text when hover over  */}
+                    <TooltipComponent content="Menu" position="ButtonCenter" > 
                         <button 
                                 type='button' 
                                 onClick={() => {setActiveMenu(

@@ -12,11 +12,22 @@
 export const ContextProvider = ({children}) => {
     const [activeMenu, setActiveMenu] = useState(true)
 
+    //context use for button in navbar
+    const [isClicked, setIsClicked] = useState(initialState)
+
+    //handle when click button in navbar
+    const handleClick = (clicked) => {
+        setIsClicked({ ... initialState, [clicked] : true});
+    }
+
     return(
         <StateContext.Provider
             value={{
                 activeMenu: activeMenu,
-                setActiveMenu: setActiveMenu
+                setActiveMenu: setActiveMenu,
+                isClicked,
+                setIsClicked,
+                handleClick
             }}
         >
             {children}
