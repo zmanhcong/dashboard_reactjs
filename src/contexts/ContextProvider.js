@@ -15,6 +15,9 @@ export const ContextProvider = ({children}) => {
     //context use for button in navbar
     const [isClicked, setIsClicked] = useState(initialState)
 
+    //context use for display/hide menu bar when ScreenSize changed
+    const [screenSize, setScreenSize] = useState(undefined)
+
     //handle when click button in navbar
     const handleClick = (clicked) => {
         setIsClicked({ ... initialState, [clicked] : true});
@@ -27,7 +30,8 @@ export const ContextProvider = ({children}) => {
                 setActiveMenu: setActiveMenu,
                 isClicked,
                 setIsClicked,
-                handleClick
+                handleClick,
+                screenSize, setScreenSize
             }}
         >
             {children}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
 import { FiShoppingCart } from 'react-icons/fi';
 import { BsChatLeft } from 'react-icons/bs';
@@ -35,8 +35,29 @@ const Navbar = () => {
         setActiveMenu, 
         isClicked, 
         setIsclicked, 
-        handleClick
+        handleClick,
+        screenSize, setScreenSize
     } = useStateContext();
+
+    //Get size of screen
+    useEffect (() => {
+      const handleResize = () => setScreenSize(window.innerWidth)
+
+      window.addEventListener('resize', handleResize)
+
+      handleResize();
+      return() => window.removeEventListener('resize', handleResize)
+    }, []);
+    
+    //Trigger screen size is changed. if SmartPhone size, MenuBar is close
+    useEffect(() => {
+        if (screenSize <= 900) {
+            setActiveMenu(false);
+        }else{
+            setActiveMenu(true);
+        }
+
+    }, [screenSize])
 
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>
